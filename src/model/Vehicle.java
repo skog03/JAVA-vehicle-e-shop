@@ -90,7 +90,7 @@ public abstract class Vehicle {
 		setId();
 		setTitle("title");
 		setVehicleCode();
-		setPrice(1);
+		setPrice(1.00f);
 		setQuantity(1);
 		seteType(energyType.not_specified);
 	}
