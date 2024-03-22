@@ -38,6 +38,7 @@ public class Bus extends Vehicle{
 		setHasBaggageDivision(hasBaggageDivision);
 	}
 	
+	@Override
 	public String toString() {
 		return super.toString() + "   nr of seats:" + numberOfSeats + ", has baggage? " + hasBaggageDivision;
 	}

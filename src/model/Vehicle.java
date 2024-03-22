@@ -7,7 +7,7 @@ public abstract class Vehicle {
 	private String vehicleCode;
 	private float price;
 	private int quantity;
-	private energyType eType;
+	private EnergyType eType;
 
 	private static int counter = 0;
 
@@ -68,16 +68,16 @@ public abstract class Vehicle {
 
 	}
 
-	public energyType geteType() {
+	public EnergyType geteType() {
 		return eType;
 	}
 
-	public void seteType(energyType eType) {
+	public void seteType(EnergyType eType) {
 		if (eType != null) {
 			this.eType = eType;
 		} 
 		else {
-			this.eType = energyType.not_specified;
+			this.eType = EnergyType.not_specified;
 		}
 
 	}
@@ -92,11 +92,11 @@ public abstract class Vehicle {
 		setVehicleCode();
 		setPrice(1.00f);
 		setQuantity(1);
-		seteType(energyType.not_specified);
+		seteType(EnergyType.not_specified);
 	}
 	
 	
-	public Vehicle(String title, float price, int quantity, energyType eType) {
+	public Vehicle(String title, float price, int quantity, EnergyType eType) {
 		setId();
 		setTitle(title);
 		setVehicleCode();
@@ -107,7 +107,7 @@ public abstract class Vehicle {
 	
 	
 	//toString
-	
+	@Override
 	public String toString() {
 		//12_mercedes - electric - 20$ q:1
 		return vehicleCode + " - " + eType + " - " + price + "$ q:" + quantity;
@@ -115,16 +115,7 @@ public abstract class Vehicle {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
