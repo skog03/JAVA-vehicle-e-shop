@@ -1,7 +1,10 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 public class Purchase {
 	/*
@@ -17,6 +20,7 @@ public class Purchase {
 	*/
 	
 	private String userCardNr;
+	//no need for set functions, is initialized(=)
 	private ArrayList<Vehicle> shoppingList = new ArrayList<Vehicle> ();
 	private LocalDateTime dateTime = LocalDateTime.now();
 	
@@ -28,7 +32,7 @@ public class Purchase {
 			this.userCardNr = userCardNr;
 		}
 		else {
-			this.userCardNr = "Undefinded";
+			this.userCardNr = "0000 0000 0000 0000";
 		}
 		
 	}
@@ -36,35 +40,39 @@ public class Purchase {
 	public ArrayList<Vehicle> getShoppingList() {
 		return shoppingList;
 	}
-	public void setShoppingList(ArrayList<Vehicle> shoppingList) {
+
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+	
+	public void setShoppingList(ArrayList<Vehicle> shoppingList){
 		if(shoppingList != null) {
 			this.shoppingList = shoppingList;
 		}
-		else {
-			this.shoppingList = new ArrayList<Vehicle>();
-		}
-	}
-	
-	public LocalDateTime getDateTime() {
-		return dateTime;
 	}
 	
 	
 	
 	//constructors
-	public Purchase(String userCardNr, ArrayList<Vehicle> shoppingList, LocalDateTime dateTime) {                          
-		this.userCardNr = userCardNr;
-		this.shoppingList = shoppingList;
+	
 	
 	public Purchase() {
 		setUserCardNr("1234 5678 1478 1236");
-		setShoppingList(new ArrayList<Vehicle>());
 	}
 
+	public Purchase(String userCardNr) {                          
+		this.userCardNr = userCardNr;
+	}
 	
+	public Purchase(String userCardNr, ArrayList<Vehicle> shoppingList) {                          
+		this.userCardNr = userCardNr;
+		setShoppingList(shoppingList);
+	}
 	@Override
 	public String toString() {
-		return "Card number: " + userCardNr +"; Shopping list: " + shoppingList + "; Time: " + dateTime;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		return "Card number: " + userCardNr +"; Shopping list size: " + shoppingList.size() + " [" + dateTime.format(formatter) + "]";
 	}
 	
 }

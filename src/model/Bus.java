@@ -18,7 +18,7 @@ public class Bus extends Vehicle{
 		}
 		
 	}
-	public boolean isHasBaggageDivision() {
+	public boolean getHasBaggageDivision() {
 		return hasBaggageDivision;
 	}
 	public void setHasBaggageDivision(boolean hasBaggageDivision) {
