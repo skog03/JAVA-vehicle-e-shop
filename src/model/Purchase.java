@@ -4,7 +4,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+
 import javax.print.attribute.standard.DateTimeAtCompleted;
+
+import service.MainService;
 
 public class Purchase {
 	/*
@@ -74,5 +77,55 @@ public class Purchase {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		return "Card number: " + userCardNr +"; Shopping list size: " + shoppingList.size() + " [" + dateTime.format(formatter) + "]";
 	}
+	
+	
+	//other functions 
+	
+	
+	/*
+	 The function addVehicleToShoppingListByVehicleCode(), which searches for the
+vehicle in the shop (or in the Vehicle type list created in 6a) by the given vehicle
+code and adds it to the shopper's purchase or shoppingList list. At that point, the
+number of this vehicle shall be reduced by 1 in the shop (or Vehicle type list
+created in point 6a).
+	 */
+	
+	public void addVehicleToShoppingListByVehicleCode(String inputVehicleCode, int inputQuantity) throws Exception {
+		if(inputVehicleCode == null) {
+			throw new Exception("Vehicle code is null");
+		}
+		else {
+			for(Vehicle tempV: MainService.allVehicles) {//iterating all vehicles in the shop
+				if(tempV.getVehicleCode().equals(inputVehicleCode)) {
+					if(tempV.getQuantity() <= 0) {
+						throw new Exception("Quantity is less than one");
+					}
+					else {
+						if(tempV instanceof Bus) {
+							Bus busFromService = (Bus)tempV;
+							Bus boughtBus = new Bus(busFromService.getVehicleCode(), busFromService.getPrice(), inputQuantity, busFromService.geteType(), busFromService.getNumberOfSeats(), busFromService.getHasBaggageDivision());
+							shoppingList.add(boughtBus);
+						}
+						else if(tempV instanceof Tractor) {
+							Tractor tractorFromService = (Tractor)tempV;
+							Tractor boughtTractor = new Tractor(tractorFromService.getVehicleCode(), tractorFromService.getPrice(), inputQuantity, tractorFromService.geteType(), tractorFromService.getAdditionalTechniques(), tractorFromService.isOnlyLargeTires());
+							shoppingList.add(boughtTractor);
+						}
+						
+						tempV.setQuantity(tempV.getQuantity() - inputQuantity);
+					}
+					return;
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -12,7 +12,7 @@ import model.Purchase;
 public class MainService {
 	
 	public static ArrayList<Vehicle> allVehicles = new ArrayList<Vehicle>();
-	public static ArrayList<Purchase> allPurchases = new ArrayList<Purchase>();
+	private static ArrayList<Purchase> allPurchases = new ArrayList<Purchase>();
 	
 	public static void main(String[] args) {
 		/*
@@ -23,10 +23,10 @@ public class MainService {
 		
 		Bus bus1 = new Bus("Volvo", 150000, 5, EnergyType.electric, 50, true);
 		Bus bus2 = new Bus("Mercedes", 100000, 1, EnergyType.petrol, 47, true);
-		Bus bus3 = new Bus("Yutong", 12000, 9, EnergyType.gas, 49, false);
+		Bus bus3 = new Bus("Yutong", 1200, 9, EnergyType.gas, 49, false);
 		
 		
-		Tractor tr1 = new Tractor("New Holland", 300000, 6, EnergyType.petrol, "Harvest", false);
+		Tractor tr1 = new Tractor("New Holland", 3000, 6, EnergyType.petrol, "Harvest", false);
 		Tractor tr2 = new Tractor("CAT", 1500000, 2, EnergyType.gas, "Tilling", true);
 		
 		allVehicles.addAll(Arrays.asList(bus1, bus2, bus3, tr1, tr2));
@@ -53,7 +53,7 @@ public class MainService {
 			System.out.println("-----------------------------------");
 			
 			createNewBus("Scania", 600000, 10, EnergyType.diesel, 45, false);
-			createNewBus("Volvo", 150000, 2, EnergyType.electric, 50, true);
+			createNewBus("Volvo", 1500, 2, EnergyType.electric, 50, true);
 			
 			
 			for(Vehicle tempV : allVehicles) {
@@ -75,6 +75,10 @@ public class MainService {
 			
 			updateBusById(5, 550000, 10, 47);
 			getAllBusses();
+			
+			System.out.println("-----------------------------------");
+			System.out.println("Vehicles with price under 10000");
+			showVehiclesIfPriceLessThan10000();
 			
 			
 			
@@ -178,9 +182,35 @@ public class MainService {
 		
 	}
 	
+	/*
+	 Create a function showVehiclesIfPriceLessThan10000() that filters and
+returns only those vehicles with a price up to 10 000 EUR (not included).
+In this case, the detailed information should be returned, regardless of the
+vehicle type (Bus or Tractor).
+	 */
+	public static void showVehiclesIfPriceLessThan10000() {
+		for(Vehicle tempV: allVehicles) {
+			if(tempV.getPrice() < 10000) {
+				System.out.println(tempV);
+			}
+		}
+		return;
+	}
 	
+	/*
+	 *Create a function howManyVehiclesAreBought() that calculates and returns
+how many vehicles have been bought in the lifetime of the store.
+Remember that a customer can buy multiple vehicles in one purchase,
+because each Purchase object stores a list of Vehicle objects or purchased
+vehicles. 
+	 *
+	 */
 	
-	
+	public static void  howManyVehiclesAreBought() {
+		for() {
+			
+		}
+	}
 	
 	
 

@@ -110,7 +110,7 @@ public abstract class Vehicle {
 	@Override
 	public String toString() {
 		//12_mercedes - electric - 20$ q:1
-		return vehicleCode + " - " + eType + " - " + price + "$ q:" + quantity;
+		return vehicleCode + "  [" + price + "$]  quantity:" + quantity +"   - " + eType + " -   ";
 	}
 	
 	
