@@ -105,6 +105,15 @@ public abstract class Vehicle {
 		seteType(eType);
 	}
 	
+	public Vehicle(int id, String title, float price, int quantity, EnergyType eType) {
+		this.id = id;
+		setTitle(title);
+		setVehicleCode();
+		setPrice(price);
+		setQuantity(quantity);
+		seteType(eType);
+	}
+	
 	
 	//toString
 	@Override

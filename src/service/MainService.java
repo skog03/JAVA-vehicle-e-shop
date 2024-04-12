@@ -36,10 +36,12 @@ public class MainService {
 		}
 		System.out.println("-----------------------------------");
 		
-		Purchase p1 = new Purchase("1234 1234 1234 1234", new ArrayList<Vehicle>(Arrays.asList(bus1)));
-		Purchase p2 = new Purchase("00", new ArrayList<Vehicle>(Arrays.asList(bus1, bus2, bus3, tr2)));
+//		Purchase p1 = new Purchase("1234 1234 1234 1234", new ArrayList<Vehicle>(Arrays.asList(bus1)));
+//		Purchase p2 = new Purchase("00", new ArrayList<Vehicle>(Arrays.asList(bus1, bus2, bus3, tr2)));
+		Purchase p1 = new Purchase("1234 1234 1234 1234)");
 		
-		allPurchases.addAll(Arrays.asList(p1, p2));
+		
+		allPurchases.addAll(Arrays.asList(p1));
 		
 		for(Purchase tempP : allPurchases) {
 			System.out.println(tempP.getClass().getName() + "->" + tempP);
@@ -80,6 +82,20 @@ public class MainService {
 			System.out.println("Vehicles with price under 10000");
 			showVehiclesIfPriceLessThan10000();
 			
+			System.out.println("-----------------------------------");
+			
+			
+			p1.addVehicleToShoppingListByVehicleCode("2_Yutong", 4);
+			p1.addVehicleToShoppingListByVehicleCode("4_CAT", 2);
+			
+			System.out.println("after adding to shopping list");
+			System.out.println(p1.calculateShoppingListValue() + "Eur");
+			System.out.println(p1.getShoppingList());
+			
+			System.out.println("-------------AFTER DELETING 1 YUTONG ----------------");
+			p1.removeOneVehicleFromShoppingList("2_Yutong");
+			System.out.println(p1.calculateShoppingListValue() + "Eur");
+			System.out.println(p1.getShoppingList());
 			
 			
 			
@@ -204,14 +220,14 @@ Remember that a customer can buy multiple vehicles in one purchase,
 because each Purchase object stores a list of Vehicle objects or purchased
 vehicles. 
 	 *
-	 */
+	 
 	
 	public static void  howManyVehiclesAreBought() {
 		for() {
 			
 		}
 	}
-	
+	*/
 	
 
 }

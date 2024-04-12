@@ -120,6 +120,47 @@ created in point 6a).
 		}
 	}
 	
+	/*
+	 * The function changeAmountOfVehicleInShoppingListByVehicleCode() shall find
+the vehicle in the shop (or in the Vehicle type list created in point 6.a.) by the
+given vehicle code and change the number of the given vehicle in its purchase or
+shoppingList. At that point, the number of the vehicle shall be reduced by the
+number passed in the shop (or Vehicle type list created in point 6a)
+	 */
+	
+	public void removeOneVehicleFromShoppingList(String VehicleCode)throws Exception
+	{
+		if(VehicleCode == null) throw new Exception("Vehicle code is null");
+		
+		for(int i=0; i < shoppingList.size(); i++) {
+			if(shoppingList.get(i).getVehicleCode().equals(VehicleCode)) {
+				if(shoppingList.get(i).getQuantity() > 0) {
+					shoppingList.get(i).setQuantity(shoppingList.get(i).getQuantity()-1);
+				}
+				
+				for(Vehicle tempV: MainService.allVehicles) {
+					if(tempV.getVehicleCode().equals(VehicleCode)) {
+						tempV.setQuantity(tempV.getQuantity()+1);
+						return;
+					}
+				}
+			}
+		}
+	}
+	
+	/*
+	 * The function calculateShoppingListValue() calculates the total value of the
+purchase taking into account the purchaser's purchase or shoppingList.
+	 */
+	
+	public float calculateShoppingListValue() throws Exception{
+		if(shoppingList.isEmpty()) throw new Exception("Shoppiung list is empty");		
+		float total = 0;
+		for(int i = 0; i < shoppingList.size(); i++) {
+			total += (shoppingList.get(i).getPrice()*shoppingList.get(i).getQuantity());
+		}
+		return total;
+	}
 	
 	
 	
